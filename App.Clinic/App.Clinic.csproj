@@ -62,4 +62,28 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\AppointmentManagement.xaml.cs">
+	    <DependentUpon>AppointmentManagement.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PhysicianManagement.xaml.cs">
+	    <DependentUpon>PhysicianManagement.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PatientManagement.xaml.cs">
+	    <DependentUpon>PatientManagement.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\AppointmentManagement.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PhysicianManagement.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PatientManagement.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

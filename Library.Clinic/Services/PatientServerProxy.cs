@@ -29,7 +29,14 @@ namespace Library.Clinic.Services
         private PatientServerProxy()
         {
             instance = null;
+            Patients = new List<Patient>
+            {
+                new Patient{PatientId = 1, Name = "John Doe"}
+                ,new Patient{PatientId = 2, Name = "Jane Doe" }
+            };
+            Console.WriteLine(Patients);
         }
+       
         public int LastKey
         {
             get
@@ -41,7 +48,22 @@ namespace Library.Clinic.Services
                 return 0;
             }
         }
-        public static List<Patient> Patients { get; private set; } = new List<Patient>();
+        private List<Patient> patients;
+        public List<Patient> Patients
+        {
+            get
+            {
+                return patients;
+            }
+            private set
+            {
+                //if (patients != null)
+                //{
+                patients = value;
+                //}
+
+            }
+        }
 
         public void AddPatient(Patient patient)
         {

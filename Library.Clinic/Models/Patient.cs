@@ -8,7 +8,31 @@ namespace Library.Clinic.Models
 {
     public class Patient
     {
-        public string Name { get; set; }
+        public override string ToString()
+        {
+            return Display;
+        }
+
+        public string Display
+        {
+            get
+            {
+                return $"[{PatientId}] {Name}";
+            }
+        }
+        private string? name;
+        public string Name
+        {
+            get
+            {
+                return name ?? string.Empty;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
         public int PatientId { get; set; } 
         public string Address { get; set; }
         public string Gender { get; set; }

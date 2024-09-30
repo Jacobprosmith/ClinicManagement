@@ -10,7 +10,7 @@ namespace Library.Clinic.Models
     {
         public override string ToString()
         {
-            return Display;
+            return $"[{PatientId}] {Name}";
         }
 
         public string Display

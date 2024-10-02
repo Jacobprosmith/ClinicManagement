@@ -20,9 +20,9 @@ public partial class PatientManagement : ContentPage, INotifyPropertyChanged
 		Shell.Current.GoToAsync("//MainPage");
     }
 
-    private void DeletePatient(object sender, EventArgs e)
+    private void DeleteClicked(object sender, EventArgs e)
     {
-
+        (BindingContext as PatientManagementViewModel)?.Delete();
     }
     private void ViewPatients(object sender, EventArgs e)
     {
@@ -30,11 +30,13 @@ public partial class PatientManagement : ContentPage, INotifyPropertyChanged
     }
     private void AddPatient(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("//PatientDetails");
+        Shell.Current.GoToAsync("//PatientDetails?patientId=0");
     }
     private void EditPatient(object sender, EventArgs e)
     {
-
+        var selectedPatientId = (BindingContext as PatientManagementViewModel)?
+            .SelectedPatient?.PatientId ?? 0;
+        Shell.Current.GoToAsync($"//PatientDetails?patientId={selectedPatientId}");
     }
     private void PatientManagement_NavigatedTo(object sender, NavigatedToEventArgs e)
     {

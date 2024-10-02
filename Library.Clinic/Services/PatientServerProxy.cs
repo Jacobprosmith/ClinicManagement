@@ -65,13 +65,18 @@ namespace Library.Clinic.Services
             }
         }
 
-        public void AddPatient(Patient patient)
+        public void AddorUpdatePatient(Patient patient)
         {
+            bool isAdd = false;
             if (patient.PatientId <= 0)
             {
                 patient.PatientId = LastKey + 1;
+                isAdd = true;
             }
-            Patients.Add(patient);
+            if (isAdd)
+            {
+                Patients.Add(patient);
+            }
         }
         public void DeletePatient(int id) {
             var patientToRemove = Patients.FirstOrDefault(p => p.PatientId== id);

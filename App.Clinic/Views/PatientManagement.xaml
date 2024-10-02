@@ -12,10 +12,11 @@
             HorizontalOptions="Center" />
         <ListView 
             ItemsSource="{Binding Patients}" 
+            SelectedItem="{Binding SelectedPatient}"
             ></ListView>
         <Button Text="Cancel" Clicked="CancelClicked" />
         <Button Text="Add Patient" Clicked="AddPatient"/>
-        <Button Text="Delete Patient" Clicked="DeletePatient"/>
+        <Button Text="Delete" Clicked="DeleteClicked"/>
         <Button Text="Edit Patient" Clicked="EditPatient"/>
         <Button Text="View Patients" Clicked="ViewPatients"/>
     </VerticalStackLayout>

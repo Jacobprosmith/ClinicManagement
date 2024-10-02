@@ -29,7 +29,14 @@ namespace Library.Clinic.Services
         private PatientServerProxy()
         {
             instance = null;
+            Patients = new List<Patient>
+            {
+                new Patient{PatientId = 1, Name = "John Doe"}
+                ,new Patient{PatientId = 2, Name = "Jane Doe" }
+            };
+            Console.WriteLine(Patients);
         }
+       
         public int LastKey
         {
             get
@@ -41,15 +48,35 @@ namespace Library.Clinic.Services
                 return 0;
             }
         }
-        public static List<Patient> Patients { get; private set; } = new List<Patient>();
-
-        public void AddPatient(Patient patient)
+        private List<Patient> patients;
+        public List<Patient> Patients
         {
+            get
+            {
+                return patients;
+            }
+            private set
+            {
+                //if (patients != null)
+                //{
+                patients = value;
+                //}
+
+            }
+        }
+
+        public void AddorUpdatePatient(Patient patient)
+        {
+            bool isAdd = false;
             if (patient.PatientId <= 0)
             {
                 patient.PatientId = LastKey + 1;
+                isAdd = true;
             }
-            Patients.Add(patient);
+            if (isAdd)
+            {
+                Patients.Add(patient);
+            }
         }
         public void DeletePatient(int id) {
             var patientToRemove = Patients.FirstOrDefault(p => p.PatientId== id);

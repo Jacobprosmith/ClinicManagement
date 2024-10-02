@@ -63,6 +63,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Library.Clinic\Library.Clinic.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\AppointmentManagement.xaml.cs">
 	    <DependentUpon>AppointmentManagement.xaml</DependentUpon>
 	  </Compile>
@@ -76,6 +80,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AppointmentManagement.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PatientView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PhysicianManagement.xaml">

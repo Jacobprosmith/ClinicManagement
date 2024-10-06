@@ -18,14 +18,17 @@ namespace App.Clinic.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public Patient? SelectedPatient { get; set; }
-        public ObservableCollection<Patient> Patients
+        public PatientViewModel? SelectedPatient { get; set; }
+        public ObservableCollection<PatientViewModel> Patients
         //public List<Patient> Patients
         {
             get
             {
-                return new ObservableCollection<Patient>(PatientServerProxy.Current.Patients);
-                //return PatientServerProxy.Current.Patients;
+                return new ObservableCollection<PatientViewModel>(
+                    PatientServerProxy.Current.Patients
+                    .Where(p => p!= null)
+                    .Select(p => new PatientViewModel(p)));
+   
 
             }
         }

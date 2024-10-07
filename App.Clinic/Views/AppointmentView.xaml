@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Clinic.Views.AppointmentView"
+             Title="AppointmentView"
+             NavigatedTo="AppointmentView_NavigatedTo">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="Name:"/>
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}"/>
+            <Label Grid.Column="0" Grid.Row="1" Text="Physician:"/>
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding PhysicianObj.Name, Mode=TwoWay}" Placeholder="Enter physician name"/>
+            <Label Grid.Column="0" Grid.Row="2" Text="Patient:"/>
+            <Entry Grid.Column="1" Grid.Row="2" Text="{Binding PatientObj.Name, Mode=TwoWay}" Placeholder="Enter patient name"/>
+            <Label Grid.Column="0" Grid.Row="3" Text="Appointment Date:"/>
+            <DatePicker Grid.Column="1" Grid.Row="3" Date="{Binding AppointmentTime, Mode=TwoWay}"/>
+            <Label Grid.Column="0" Grid.Row="4" Text="Appointment Time:"/>
+            <TimePicker Grid.Column="1" Grid.Row="4" Time="{Binding AppointmentTime, Mode=TwoWay}"/>
+        </Grid>
+        
+        <Button Text="Ok" Clicked="AddClicked" />
+        <Button Text="Cancel" Clicked="CancelClicked" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -33,8 +33,7 @@ namespace Library.Clinic.Services
             {
                 new Patient{PatientId = 1, Name = "John Doe"}
                 ,new Patient{PatientId = 2, Name = "Jane Doe" }
-            };
-            Console.WriteLine(Patients);
+            }; 
         }
        
         public int LastKey

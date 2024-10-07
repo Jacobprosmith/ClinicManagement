@@ -8,18 +8,39 @@ namespace Library.Clinic.Models
 {
     public class Physician
     {
-        public string Name { get; set; }
+        public override string ToString()
+        {
+            return Display;
+        }
+        public string Display
+        {
+            get
+            {
+                return $"[{PhysicianId}] {Name}"; 
+            }
+        }
+        public string? name;
+
+        public string Name
+        {
+            get
+            {
+                return name ?? string.Empty;
+            }
+            set
+            {
+                name = value;
+            }
+        }
         public string Specializations { get; set; }
         public string LicenseNumber { get; set; }
         public int PhysicianId { get; set; }
         public DateTime GraduationDate { get; set; }
-        public List<Appointments> Appointments { get; set; }
         public Physician() { 
             Name = string.Empty;
             Specializations = string.Empty;
             LicenseNumber = string.Empty;
             GraduationDate = DateTime.MinValue;
-            Appointments = new List<Appointments>();
         }
 
     }

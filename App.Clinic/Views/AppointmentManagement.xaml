@@ -2,12 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Clinic.Views.AppointmentManagement"
-             Title="AppointmentManagement">
+             Title="AppointmentManagement"
+             NavigatedTo="AppointmentManagement_NavigatedTo">
+
     <VerticalStackLayout>
         <Label 
             Text="What would you like to do?"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <ListView 
+            ItemsSource="{Binding Appointments}" 
+            SelectedItem="{Binding SelectedAppointment}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" ColumnSpacing="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontAttributes="Bold" Grid.Column="0" Text="{Binding AppointmentId}"/>
+                            <StackLayout Grid.Column="1" Spacing="0">
+                                <Label Text="{Binding PhysicianName}" FontAttributes="Bold"/>
+                                <Label Text="{Binding PatientName}" FontSize="Small"/>
+                            </StackLayout>
+                            <HorizontalStackLayout Grid.Column="2" Spacing="5">
+                                <Button Text="Edit" Clicked="EditAppointment" Padding="5" WidthRequest="60"/>
+                                <Button Text="Delete" Clicked="DeleteClicked" Padding="5" WidthRequest="60"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <Button Text="Cancel" Clicked="CancelClicked" />
+        <Button Text="Add Appointment" Clicked="AddAppointment"/>
+        <Button Text="Delete" Clicked="DeleteClicked"/>
+        <Button Text="Edit Appointment" Clicked="EditAppointment"/>
+        <Button Text="View Appointments" Clicked="ViewAppointments"/>
     </VerticalStackLayout>
 </ContentPage>
